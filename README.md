@@ -44,4 +44,5 @@
 ## 使用素材
 - フリー素材として以下を使用 <br/>
 　　pixabay（https://pixabay.com/ja/）
+- 研究記事の参考 <br/>
     香り表現における色の活用（https://www.t-hasegawa.co.jp/research/document/55）
