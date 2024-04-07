@@ -1,8 +1,18 @@
 Rails.application.routes.draw do
-  
-  devise_for :users
-  devise_for :admins
-  
+
+  # 顧客用
+  # URL /users/sign_in...
+  devise_for :users,skip: [:passwords], controllers: {
+    registrations: "public/registrations",
+    sessions: 'public/sessions'
+  }
+
+  # 管理者用
+  # URL /admin/sign_in...
+  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+    sessions: "admin/sessions"
+  }
+
   # 会員側
   scope module: :public do
     root to: "homes#top"
@@ -15,12 +25,12 @@ Rails.application.routes.draw do
     end
     resources :comments, only: [:create, :destroy]
   end
-  
-  
+
+
   # 管理者用
   namespace :admin do
     root to: "homes#top"
-    resources :items, only: [:index, :new, :create, :show, :edit, :update]
+    resources :items, except: [:destroy]
     resources :users, only: [:index, :show, :edit, :update]
     resources :posts, only: [:index, :show, :destroy]
   end
