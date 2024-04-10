@@ -1,5 +1,34 @@
-<% @items.each do |item| %>
-  <div>
-    <%= image_tag item.get_image %>
-    <p>投稿</p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <table class="table">
+        <thead>
+          <tr align="center">
+            <th>商品ID</th>
+            <th>商品名</th>
+            <th>価格</th>
+            <th>容量</th>
+            <th>ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @items.each do |item| %>
+          <tr align="center">
+            <td><%= item.id %></td>
+            <td><%= link_to item.name, admin_item_path(item) %></td>
+            <td><%= item.price %>円</td>
+            <td><%= item.capacity %>ml</td>
+            <td>
+              <% if item.is_active %>
+                <p><strong>販売中</strong></p>
+              <% elsif %>
+                <p><strong>販売停止</strong></p>
+              <% end %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
+</div>

@@ -1,20 +1,84 @@
-<% if admin_signed_in? %>
-<!--管理者がログインしている場合-->
-  <li>
-    <%= link_to new_admin_item_path do %>商品登録<% end %>
-    <%= link_to destroy_admin_session_path, method: :delete do %>ログアウト<% end %>
-  </li>
-<% elsif user_signed_in? %>
-<!--顧客がログインしている場合-->
-  <li>
-    <%= link_to destroy_user_session_path, method: :delete do %>ログアウト<% end %>
-  </li>
-<% else %>
-<!--どちらもログインしていない場合-->
-  <li>
-    <%= link_to new_user_registration_path do %>新規登録<% end %>
-  </li>
-  <li>
-    <%= link_to new_user_session_path do%>ログイン<% end %>
-  </li>
-<% end %>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
+  <div class="container">
+    <a class="navbar-brand" href="/"><span>Fragrance Palette</span></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto">
+      <% if admin_signed_in? %>
+      <!--管理者がログインしている場合-->
+        <li>
+          <%= link_to new_admin_item_path, class: 'nav-link text-light' do %>
+            <i class="fa-solid fa-check"></i> new
+          <% end %>
+        </li>
+        <li>
+          <%=  link_to admin_users_path,class: 'nav-link text-light' do %>
+            <i class="fas fa-users"></i> users
+          <% end %>
+        </li>
+        <li>
+          <%= link_to admin_items_path, class: 'nav-link text-light' do %>
+            <i class="fa-solid fa-spray-can-sparkles"></i> index
+          <% end %>
+        </li>
+        <li>
+          <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-light' do %>
+            <i class="fas fa-sign-out-alt"></i> log out
+          <% end %>
+        </li>
+      <% elsif user_signed_in? %>
+      <!--顧客がログインしている場合-->
+        <li>
+          <%= link_to root_path, class: 'nav-link text-light' do %>
+            <i class="fas fa-home"></i> home
+          <% end %>
+        </li>
+        <li>
+          <%= link_to user_path(current_user.id), class: 'nav-link text-light' do %>
+            <i class="fa-solid fa-user"></i> mypage
+          <% end %>
+        </li>
+        <li>
+          <%= link_to items_path, class: 'nav-link text-light' do %>
+            <i class="fa-solid fa-spray-can-sparkles"></i> fragrance
+          <% end %>
+        </li>
+        <li>
+          <%= link_to posts_path, class: 'nav-link text-light' do %>
+            <i class="fa-solid fa-comment"></i> post
+          <% end %>
+        </li>
+        <li>
+          <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-light' do %>
+            <i class="fas fa-sign-out-alt"></i> log out
+          <% end %>
+        </li>
+      <% else %>
+      <!--どちらもログインしていない場合-->
+        <li>
+          <%= link_to root_path,class: 'nav-link text-light' do %>
+            <i class="fas fa-home"></i> home
+          <% end %>
+        </li>
+        <li>
+          <%= link_to items_path,class: 'nav-link text-light' do %>
+            <i class="fa-solid fa-spray-can-sparkles"></i> about
+          <% end %>
+        </li>
+        <li>
+          <%= link_to new_user_registration_path,class: 'nav-link text-light' do %>
+            <i class="fas fa-user-plus"></i> signup
+          <% end %>
+        </li>
+        <li>
+          <%= link_to new_user_session_path ,class: 'nav-link text-light' do %>
+            <i class="fas fa-sign-in-alt"></i> login
+          <% end %>
+        </li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>

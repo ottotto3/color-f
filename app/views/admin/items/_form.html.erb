@@ -1,0 +1,42 @@
+<%= form_with(model: item, url: (item.persisted? ? admin_item_path(item) : admin_items_path), local: true) do |f| %>
+  <table class='table'>
+    <tr>
+      <th>商品画像</th>
+      <td><%= f.file_field :image, class: "form-control-file itam_image", accept: "image/*" %></td>
+    </tr>
+    <tr>
+      <th>商品名</th>
+      <td><%= f.text_field :name, class: "form-control name" %></td>
+    </tr>
+    <tr>
+      <th>商品紹介</th>
+      <td><%= f.text_area :introduction, class: "form-control" %></td>
+    </tr>
+    <tr>
+      <th>価格</th>
+      <td><%= f.text_field :price, class: "form-control" %></td>
+    </tr>
+    <tr>
+      <th>容量</th>
+      <td><%= f.text_field :capacity, class: "form-control" %></td>
+    </tr>
+    <tr>
+      <th>販売ステータス</th>
+      <td>
+        <%= f.radio_button :is_active, "true" %>販売中
+        <%= f.radio_button :is_active, "false" %>販売停止中
+      </td>
+    </tr>
+    <tr>
+      <th>
+        <% if item.persisted? %>  <!--itemオブジェクトがDBに保存されている場合にtrue-->
+          <%= f.submit '更新' %>
+        <% else %>
+          <%= f.submit '新規登録' %>
+        <% end %>
+      </th>
+    </tr>
+  </table>
+<% end %>
+
+  

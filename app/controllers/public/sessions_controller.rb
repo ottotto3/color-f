@@ -37,11 +37,11 @@ class Public::SessionsController < Devise::SessionsController
     # 入力されたemailからアカウントを1県取得
     user = User.find_by(email: params[:user][:email])
     # アカウントを取得できなかった場合、このメソッドを終了する
-    return if customer.nil?
+    return if user.nil?
     # 取得したアカウントのパスワードと入力されたパスワードが一致していない場合、この処理を終了する
     return unless user.valid_password?(params[:user][:password])
     # createアクションを実行させるためにcustomer_stateメソッドを終了する
-    if customer.is_active == true
+    if user.is_active == true
       return
     else
       redirect_to new_user_registration_path
