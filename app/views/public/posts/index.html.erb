@@ -1,2 +1,34 @@
-<h1>Public::Posts#index</h1>
-<p>Find me in app/views/public/posts/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <h1>新着レビュー</h1>
+  </div>
+  <div class="row">
+    <% @posts.each do |post| %>
+    <div class="col-3">
+      <div>
+        <%= link_to item_path(post.item) do %>
+          <%= image_tag post.item.get_image, size:'150x150', class: 'img-fluid' %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-3">
+      <h4>
+        <%= link_to item_path(post.item) do %>
+          <%= post.item.name %>
+        <% end %>
+      </h4>
+      <p><%= post.item.capacity %>ml / <%= post.item.price %>円</p>
+      <p><%= l post.created_at %></p>
+    </div>
+    <div class="col-4">
+      <p><%= post.introduction %></p>
+    </div>
+    <div class="col-2">
+      <div class="color_index" style="background-color: <%= post.color %>;"></div>
+      <%= link_to "すべて表示", post_path(post.id) %>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+

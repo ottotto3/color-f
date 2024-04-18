@@ -18,12 +18,13 @@ Rails.application.routes.draw do
     root to: "homes#top"
     get 'searches/search'
     resources :items, only: [:index, :show]
-    resources :posts, only: [:new, :index, :show, :update, :create, :destroy]
+    resources :posts, only: [:new, :index, :show, :update, :create, :destroy] do
+      resources :comments, only: [:create, :destroy]
+    end
     resources :users, only: [:show, :edit, :update] do
       get   "/comfirm"    => :comfirm
       patch "/withdraw"   => :withdraw
     end
-    resources :comments, only: [:create, :destroy]
   end
 
 

@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <% post.comments.each do |comment| %>
+    <div class="col-2 mt-3" style="padding-right: 0px;">
+      <div class="profile-image">
+        <%= image_tag comment.user.get_profile_image(100, 100), class: "rounded-image" %>
+      </div>
+    </div>
+    <div class="col-10 mt-3" style="padding-left: 0px;">
+      <div class="user-info">
+        <p><strong><%= comment.user.name %></strong>さん</p>
+      </div>
+      <div class="comment-container">
+        <p><%= comment.comment %></p>
+        <div class="date-info">
+          <p><%= comment.created_at.strftime('%Y/%m/%d %H:%M') %></p>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+  
+  
