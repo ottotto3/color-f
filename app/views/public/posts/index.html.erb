@@ -1,31 +1,45 @@
 <div class="container">
   <div class="row">
-    <h1>新着レビュー</h1>
+    <h1>NEW REVIEW</h1>
   </div>
-  <div class="row">
+  <div class="row post_index">
     <% @posts.each do |post| %>
-    <div class="col-3">
-      <div>
-        <%= link_to item_path(post.item) do %>
-          <%= image_tag post.item.get_image, size:'150x150', class: 'img-fluid' %>
-        <% end %>
+    <div class="col-4" >
+      <div class="mb-4 p-3 border border-dark rounded">
+        <div class="mb-2">
+          <div class="color_index mb-3" style="background-color: <%= post.color %>;"></div>
+          <div class="row">
+            <div class="col">
+              <%= link_to item_path(post.item) do %>
+                <%= image_tag post.item.get_image, class: 'img_index' %>
+              <% end %>
+            </div>
+            <div class="col pl-0">
+              <h4><%= post.item.name %></h4>
+              <p class="mb-0">価格：<%= post.item.price %>円</p>
+              <p>容量：<%= post.item.capacity %>ml </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 border-top border-dark mt-3 p-3">
+          <div class="mr-2" style="display: inline-block; vertical-align: 3px;">
+            <%= render "static.rate", post: post %>
+          </div>
+          <div style="display: inline-block; vertical-align: middle;">
+            <h5><%= post.star %></h5>
+          </div>
+          <div class="row mb-2">
+            <div class="col-3">
+              <%= image_tag post.user.get_profile_image(100, 100), class: "user-image" %>
+            </div>
+            <div class="col pl-0 d-flex align-items-center">
+              <p><strong><%= post.user.name %></strong>さん</p>
+            </div>
+          </div>
+          <p><%= post.introduction %></p>
+           <p><%= link_to "すべて表示", post_path(post.id) %></p>
+        </div>
       </div>
-    </div>
-    <div class="col-3">
-      <h4>
-        <%= link_to item_path(post.item) do %>
-          <%= post.item.name %>
-        <% end %>
-      </h4>
-      <p><%= post.item.capacity %>ml / <%= post.item.price %>円</p>
-      <p><%= l post.created_at %></p>
-    </div>
-    <div class="col-4">
-      <p><%= post.introduction %></p>
-    </div>
-    <div class="col-2">
-      <div class="color_index" style="background-color: <%= post.color %>;"></div>
-      <%= link_to "すべて表示", post_path(post.id) %>
     </div>
     <% end %>
   </div>
