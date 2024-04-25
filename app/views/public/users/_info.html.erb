@@ -1,22 +1,19 @@
 <div class='col-md-3'>
   <h2>User info</h2>
-  <table class='table'>
-    <tr><%= image_tag user.get_profile_image(100,100) %></tr>
-    <tr><%= user.name %>さん</tr>
-    <tr>
-  	  <th>自己紹介</th>
-  	  <th><%= user.info %></th>
-    </tr>
-    <tr>
-      <th>好きな色</th>
-      <td>
-        <div class="color_circle" style="background-color: <%= user.color %>;"></div>
-      </td>
-    </tr>
-  </table>
-  　
+  <div>
+    <%= image_tag user.get_profile_image(100,100) %>
+    <strong><%= user.name %></strong>さん
+  </div>
+  <div class="border-top border-bottom py-2">
+    <strong>自己紹介</strong>
+    <p><%= user.info %></p>
+  </div>
+  <div class="border-bottom py-2 mb-3">
+    <strong>好きな色</strong>
+    <div class="color_circle m-1" style="background-color: <%= user.color %>;"></div>
+  </div>
   <div class='row'>
-    <% if current_user = user %>
+    <% if current_user == user %>
       <%= link_to edit_user_path(user), class: "btn btn-outline-secondary btn-block" do %>
         <i class="fas fa-user-cog"></i>
       <% end %>

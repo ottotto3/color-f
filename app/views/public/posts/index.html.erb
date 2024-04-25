@@ -4,7 +4,8 @@
   </div>
   <div class="row post_index">
     <% @posts.each do |post| %>
-    <div class="col-4" >
+    <div class="col-4">
+      <p class="mb-0 pl-1"><%= post.created_at.strftime('%Y/%m/%d %H:%M') %></p>
       <div class="mb-4 p-3 border border-dark rounded">
         <div class="mb-2">
           <div class="color_index mb-3" style="background-color: <%= post.color %>;"></div>
@@ -21,9 +22,9 @@
             </div>
           </div>
         </div>
-        <div class="col-12 border-top border-dark mt-3 p-3">
+        <div class="col-12 border-top border-dark mt-3 px-3 pt-3">
           <div class="mr-2" style="display: inline-block; vertical-align: 3px;">
-            <%= render "static.rate", post: post %>
+            <%= render "static_rate", post: post %>
           </div>
           <div style="display: inline-block; vertical-align: middle;">
             <h5><%= post.star %></h5>
@@ -33,11 +34,13 @@
               <%= image_tag post.user.get_profile_image(100, 100), class: "user-image" %>
             </div>
             <div class="col pl-0 d-flex align-items-center">
-              <p><strong><%= post.user.name %></strong>さん</p>
+              <%= link_to user_path(post.user), style: "color: #000;" do %>
+                <p><strong><%= post.user.name %></strong>さん</p>
+              <% end %>
             </div>
           </div>
           <p><%= post.introduction %></p>
-           <p><%= link_to "すべて表示", post_path(post.id) %></p>
+          <p><%= link_to "すべて表示", post_path(post.id) %></p>
         </div>
       </div>
     </div>

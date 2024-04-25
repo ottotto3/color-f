@@ -1,0 +1,50 @@
+<div class="row ml-2">
+    <h2><strong><%= item.name %></strong></h2>
+  </div>
+  <div class="row">
+    <div class="col-4 text-center img-container">
+      <%= image_tag item.get_image %>
+    </div>
+    <div class="col-8">
+      <table>
+        <tr>
+          <th>新着色</th>
+          <td>
+            <div class="item_colors_show">
+              <% sorted_posts = item.posts.order(created_at: :desc) %>
+              <% sorted_posts.first(5).each.with_index do |post, index| %>
+                <% if index != 0 %>
+                  &nbsp;
+                <% end %>
+                <a href="<%= post_path(post) %>" class="item_color_show" style="background-color: <%= post.color %>;"></a>
+              <% end %>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th>評価</th>
+          <td>
+            <div class="mr-2" style="display: inline-block;">
+              <%= render "public/posts/average_rate.html.erb", item: item %>
+            </div>
+            <div style="display: inline-block;">
+              <h4 class="mb-0"><%= @item.posts.average(:star).to_f.round(1) %></h4>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th>容量・価格</th>
+          <td><%= item.capacity %>ml・<%= item.price %>円</td>
+        </tr>
+        <tr>
+          <th></th>
+          <td>
+            クチコミ：<%= item.posts.count %>件
+            <%= link_to new_post_path(item_id: item.id), class: "ml-5 btn btn-success" do %>
+              クチコミする
+            <% end %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>

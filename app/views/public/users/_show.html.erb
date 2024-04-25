@@ -1,0 +1,37 @@
+<% post.each do |post| %>
+<div class="mb-4 p-4 border border-dark rounded ">
+  <div class="mb-2">
+    <div class="color_index mb-3" style="background-color: <%= post.color %>;"></div>
+    <div class="row">
+      <div class="col-5">
+        <%= link_to item_path(post.item) do %>
+          <%= image_tag post.item.get_image, class: 'img_mypage' %>
+        <% end %>
+      </div>
+      <div class="col mt-4">
+        <h3><%= post.item.name %></h3>
+        <p class="mb-0">価格：<%= post.item.price %>円</p>
+        <p>容量：<%= post.item.capacity %>ml </p>
+        <p>コメント件数：<%= post.comments.count %></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 border-top border-dark mt-3 p-3">
+  <div class="d-flex justify-content-between align-items-center">
+    <div>
+      <div class="mr-2" style="display: inline-block; vertical-align: 3px;">
+        <%= render "public/posts/static_rate", post: post %>
+      </div>
+      <div style="display: inline-block; vertical-align: middle;">
+        <h5><%= post.star %></h5>
+      </div>
+    </div>
+    <div style="display: inline-block;">
+      <p style="text-align: right;"><%= post.created_at.strftime('%Y/%m/%d %H:%M') %></p>
+    </div>
+  </div>
+  <p class="mt-2"><%= post.introduction %></p>
+  <p><%= link_to "すべて表示", post_path(post.id) %></p>
+</div>
+</div>
+<% end %>

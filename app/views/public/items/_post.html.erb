@@ -1,0 +1,27 @@
+<div class="row item_show_post">
+  <% post.each do |post| %>
+  <div class="col-12 border-top p-3">
+    <div class="row">
+      <div class="col-1 post_color mb-3" style="background-color: <%= post.color %>;"></div>
+      <div class="col-11 pl-4">
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="mr-2" style="display: inline-block; vertical-align: 3px;">
+            <%= image_tag post.user.get_profile_image(100, 100), class: "user-image" %>
+          </div>
+          <div class="d-flex align-items-center" style="flex-grow: 1;">
+            <%= link_to user_path(post.user), style: "margin-right: auto; color: #000;" do %>
+              <p><strong><%= post.user.name %></strong>さん</p>
+            <% end %>
+            <p style="text-align: right;"><%= post.created_at.strftime('%Y/%m/%d %H:%M') %></p>
+          </div>
+        </div>
+        <div class="mt-2">
+          <%= render "public/posts/static_rate", post: post %>
+        </div>
+        <p class="mt-2"><%= post.introduction %></p>
+        <p class="text-right"><%= link_to "すべて表示", post_path(post.id) %></p>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>

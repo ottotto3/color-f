@@ -1,0 +1,19 @@
+<% items.each do |item| %>
+<div class="col-4 mb-3">
+  <h4 class="text-center"><%= link_to item.name, item_path(item) %></h4>
+  <div class="d-flex justify-content-center">
+    <div style="text-align: center;">
+      <%= link_to item_path(item) do %>
+        <%= image_tag item.get_image, class: 'rounded-item' %>
+      <% end %>
+    </div>
+    <!--新着順に５個までカラーを並べる-->
+    <div class="item_colors justify-content-center mt-2 ml-1" style="line-height: 0;">
+      <% sorted_posts = item.posts.order(created_at: :desc) %>
+      <% sorted_posts.first(5).each.with_index do |post, index| %>
+        <div class="item_color" style="background-color: <%= post.color %>; margin: 5px;" onclick="location.href='<%= post_path(post) %>';"></div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<% end %>

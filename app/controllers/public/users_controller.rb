@@ -21,6 +21,11 @@ class Public::UsersController < ApplicationController
   end
   
   def withdraw
+    @user = current_user
+    withdrew_email = "withdrew_" + Time.now.to_i.to_s + @user.email
+    @user.update(email: withdrew_email, is_active: false)
+    reset_session
+    redirect_to root_path
   end
   
   private

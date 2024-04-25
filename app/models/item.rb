@@ -6,4 +6,8 @@ class Item < ApplicationRecord
   def get_image
     (image.attached?) ? image : 'no_image.jpg'
   end
+  
+  def self.search(keyword)
+    Item.where('name LIKE ?','%'+ keyword + '%')
+  end
 end

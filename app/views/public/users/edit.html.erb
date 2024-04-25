@@ -1,28 +1,18 @@
 <div class='container'>
-  <div class='row'>
+  <div class="row justify-content-center">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-    <h2>User info</h2>
-    
-    <%= form_with model:@user, local:true do |f| %>
-      <div class="form-group">
-        <%= f.label :ニックネーム %>
-        <%= f.text_field :name, class: "form-control name" %>
-      </div>
-     <div class="form-group">
-        <%= f.label :プロフィール画像 %>
-        <%= f.file_field :profile_image, class: "form-control-file user_image", accept: 'image/*' %>
-      </div>
-      <div class="form-group">
-        <%= f.label :自己紹介 %>
-        <%= f.text_area :info, class: "form-control introduction" %>
-      </div>
-      <div class="form-group">
-        <%= f.label :好きな色 %>
-        <%= f.color_field :color, class: "form-control introduction" %>
-      </div>
-      <div class="form-group">
-        <%= f.submit class: 'btn btn-secondary' %>
-      </div>
-    <% end %>
+      <h2>User info</h2>
+      <%= form_with model:@user, local:true do |f| %>
+        <%= render "form", f: f %>
+        <div class="form-row mt-4">
+          <%= f.submit "編集内容を保存", class: 'btn btn-secondary btn-block' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-6 col-lg-3 order-1 order-md-0 mt-4">
+      <%= link_to "退会する", user_comfirm_path(@user), class: "btn btn-danger btn-sm btn-block" %>
+    </div>
   </div>
 </div>

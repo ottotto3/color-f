@@ -1,0 +1,17 @@
+<div class="form-group">
+  <%= f.label :ニックネーム %>
+  <%= f.text_field :name, class: "form-control name" %>
+</div>
+<div class="form-group">
+  <%= f.label :プロフィール画像 %>
+  <%= f.file_field :profile_image, class: "form-control-file user_image", accept: 'image/*' %>
+</div>
+<div class="form-group">
+  <%= f.label :自己紹介 %>
+  <%= f.text_area :info, class: "form-control introduction" %>
+</div>
+<div class="form-group">
+  <%= f.label :好きな色 %>
+  <%= f.color_field :color, class: "form-control introduction" %>
+</div>
+

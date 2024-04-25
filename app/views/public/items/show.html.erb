@@ -1,44 +1,4 @@
 <div class="container">
-  <div class="row">
-    <h4>商品詳細</h4>
-  </div>
-  <div class="row">
-    <div class="col-md-4 col-sm-12 text-center img-container">
-      <%= image_tag @item.get_image %>
-    </div>
-    <div class="col-md-8 col-sm-12">
-    <table>
-      <tr>
-        <th>商品名</th>
-        <td><%= @item.name %></td>
-      </tr>
-      <tr>
-        <th>商品説明</th>
-        <td><%= @item.introduction %></td>
-      </tr>
-      <tr>
-        <th>容量</th>
-        <td><%= @item.capacity %>ml</td>
-      </tr>
-      <tr>
-        <th>価格</th>
-        <td><%= @item.price %>円</td>
-      </tr>
-      <tr>
-        <th>販売ステータス</th>
-        <td>
-          <% if @item.is_active %>
-            <p><strong>販売中</strong></p>
-          <% elsif %>
-            <p><strong>販売停止</strong></p>
-          <% end %>
-        </td>
-      </tr>
-    </table>
-    <div>
-      <%= link_to new_post_path(item_id: @item.id), class: "ml-ato btn btn-success" do %>
-        クチコミ
-      <% end %>
-    </div>
-  </div>
+  <%= render 'item', item: @item %>
+  <%= render "post", post: @item.posts %>
 </div>

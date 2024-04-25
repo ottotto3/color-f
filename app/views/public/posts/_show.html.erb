@@ -14,10 +14,15 @@
       </h4>
       <p>容量・価格： <%= post.item.capacity %>ml・<%= post.item.price %>円</p>
       <p>コメント件数：<%= post.comments.count %></p>
+      <% post.tags.each do |tag| %>
+        <i class="fa-sharp fa-solid fa-tag">
+          <%= link_to tag.tag_name, searches_search_path(content: tag.tag_name, model:"tag") %>
+        </i>
+      <% end %>
     </div>
     <div class="col-12 border-top border-bottom mt-3 p-3">
       <div class="mr-2" style="display: inline-block; vertical-align: 3px;">
-        <%= render "static.rate", post: post %>
+        <%= render "public/posts/static_rate", post: post %>
       </div>
       <div style="display: inline-block; vertical-align: middle;">
         <h3><%= post.star %></h3>

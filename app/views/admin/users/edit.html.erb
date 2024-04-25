@@ -1,2 +1,42 @@
-<h1>Admin::Users#edit</h1>
-<p>Find me in app/views/admin/users/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <h2><%= @user.name %>さんの会員情報編集</h2>
+  </div>
+  <div class="row">
+    <div class="col">
+      <%= form_with model: @user, url: admin_user_path, method: :patch do |f| %>
+        <%= render "public/shared/error_messages", resource: @user %>
+        <table class='table'>
+          <tr>
+            <th><%= f.label :name, "ニックネーム" %></th>
+            <td><%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "sample" %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :email, "メールアドレス" %></th>
+            <td><%= f.email_field :email, autocomplete: "email", placeholder: "sample@example.com" %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :info, "自己紹介" %></th>
+            <td><%= f.text_field :infoo, placeholder: "よろしくお願いします" %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :color, "好きな色" %></th>
+            <td><%= f.color_field :color %></td>
+          </tr>
+          <tr>
+            <th>会員ステータス</th>
+            <td>
+              <%= f.radio_button :is_active, true, id: "active_true" %>
+              <%= f.label :is_active, "有効", for: "active_true" %>
+              <%= f.radio_button :is_active, false, id: "active_false" %>
+              <%= f.label :is_active, "退会", for: "active_false" %>
+            </td>
+          </tr>
+        </table>
+        <div class="actions">
+          <%= f.submit "変更を保存", class: "btn btn-success" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

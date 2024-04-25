@@ -1,0 +1,14 @@
+<div class='container mb-2'>
+  <div class='row'>
+  	<div class='mx-auto'>
+  	  <!--ログアウト時に検索画面が出ていないようにできています。-->
+  	  <% if user_signed_in? %>
+        <%= form_with url: searches_search_path, method: "get", local: true do |f| %>
+          <%= f.text_field :keyword %>
+          <%= f.select :model, options_for_select({ 'User' => 'user', 'Item' => 'item' }) %>
+          <%= submit_tag "検索" %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

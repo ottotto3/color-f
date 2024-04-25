@@ -1,0 +1,8 @@
+<% if @model == 'item' %>
+    <h3>Users search for "<%= @keyword %>"</h3>
+  <%= render 'admin/items/index', items: @results %>
+<% elsif @model == 'user' %>
+    <h3>Posts search for "<%= @keyword %>"</h3>
+  <%= render 'admin/posts/index', posts: @results %>
+<% end %>
+

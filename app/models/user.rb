@@ -9,6 +9,10 @@ class User < ApplicationRecord
   
   has_one_attached :profile_image
   
+  def self.search(keyword)
+    Item.where('name LIKE ?','%'+ keyword + '%')
+  end
+  
   def get_profile_image(width, height)
     unless profile_image.attached?
       file_path = Rails.root.join('app/assets/images/no_image1.jpg')

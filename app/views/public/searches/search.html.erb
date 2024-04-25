@@ -1,2 +1,6 @@
-<h1>Public::Searches#search</h1>
-<p>Find me in app/views/public/searches/search.html.erb</p>
+<h3>Users search for "<%= @keyword %>"</h3>
+<% if @results.present? %>
+  <%= render 'public/items/index', items: @results %>
+<% elsif @posts.present? %>
+  <%= render partial: "public/posts/show", collection: @posts, as: :post, locals: { comment: @comment } %>
+<% end %>

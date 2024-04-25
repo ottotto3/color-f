@@ -31,6 +31,9 @@
       <% elsif user_signed_in? %>
       <!--顧客がログインしている場合-->
         <li>
+          <%= render 'public/searches/form' %>
+        </li>
+        <li>
           <%= link_to root_path, class: 'nav-link text-light' do %>
             <i class="fas fa-home"></i> home
           <% end %>
