@@ -6,6 +6,11 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
+  
+  # ゲストログイン
+  devise_scope :user do
+    post 'public/guest_sign_in', to: 'public/sessions#guest_sign_in'
+  end
 
   # 管理者用
   # URL /admin/sign_in...
@@ -16,6 +21,7 @@ Rails.application.routes.draw do
   # 会員側
   scope module: :public do
     root to: "homes#top"
+    get "home/about" => "homes#about", as: 'about'
     get 'searches/search'
     resources :items, only: [:index, :show]
     resources :posts, only: [:new, :index, :show, :update, :create, :destroy] do

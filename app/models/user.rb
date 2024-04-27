@@ -13,6 +13,13 @@ class User < ApplicationRecord
     Item.where('name LIKE ?','%'+ keyword + '%')
   end
   
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "ゲスト"
+    end
+  end
+  
   def get_profile_image(width, height)
     unless profile_image.attached?
       file_path = Rails.root.join('app/assets/images/no_image1.jpg')

@@ -1,8 +1,13 @@
 <div class="container">
-  <div class="row">
+  <div class="row justify-content-center text-new">
     <h1>NEW ITEM</h1>
   </div>
+  <div class="row justify-content-center mb-2">
+    <div class="col-2">
+      <hr style="border-top: 5px solid orange;">
+    </div>
+  </div>
   <div class="row">
-    <%= render "index", items: @items %>
+    <%= render "public/items/index", items: @items %>
   </div>
 </div>
