@@ -5,7 +5,7 @@
       <%= link_to item_path(item) do %>
         <%= image_tag item.get_image, class: 'rounded-item' %>
       <% end %>
-      <h5 class="text-center mt-2" style="color: #000;"><%= link_to item.name, item_path(item) %></h5>
+      <h5 class="text-center mt-2"><%= link_to item.name, item_path(item) %></h5>
     </div>
     <!--新着順に５個までカラーを並べる-->
     <div class="item_colors justify-content-center mt-2 ml-1" style="line-height: 0;">

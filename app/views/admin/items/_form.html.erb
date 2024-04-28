@@ -27,16 +27,18 @@
         <%= f.radio_button :is_active, "false" %>販売停止中
       </td>
     </tr>
-    <tr>
-      <th>
-        <% if item.persisted? %>  <!--itemオブジェクトがDBに保存されている場合にtrue-->
-          <%= f.submit '更新' %>
-        <% else %>
-          <%= f.submit '新規登録' %>
-        <% end %>
-      </th>
-    </tr>
   </table>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6 text-center"> 
+        <% if item.persisted? %>
+          <%= f.submit '更新', class: 'btn btn-md custom-button' %>
+        <% else %>
+          <%= f.submit '新規登録', class: 'btn btn-md custom-button' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 <% end %>
 
   

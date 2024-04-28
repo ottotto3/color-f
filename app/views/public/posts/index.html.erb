@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container post_index">
   <div class="row justify-content-center text-new">
     <h1>NEW REVIEW</h1>
   </div>
@@ -7,10 +7,15 @@
       <hr style="border-top: 5px solid orange;">
     </div>
   </div>
-  <div class="row post_index">
+    <p style="text-align: right;">
+      <%= link_to '新しい順', posts_path(latest: "true") %>
+      <%= link_to '古い順', posts_path(old: "true") %>
+      <%= link_to '評価の高い順', posts_path(star_count: "true") %>
+    </p>
+  <div class="row">
     <% @posts.each do |post| %>
     <div class="col-4">
-      <p class="mb-0 pl-1"><%= post.created_at.strftime('%Y/%m/%d %H:%M') %></p>
+      <p class="mb-0 pl-1"><%= post.created_at.strftime('%Y/%m/%d') %></p>
       <div class="mb-4 p-3 border border-dark rounded">
         <div class="mb-2">
           <div class="color_index mb-3" style="background-color: <%= post.color %>;"></div>

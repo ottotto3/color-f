@@ -5,7 +5,7 @@ class Admin::UsersController < ApplicationController
       @users = Kaminari.paginate_array(search_users).page(params[:page])
       @heading = "「#{params[:search]}」の検索結果"
     else
-      @users = User.all.page(params[:page])
+      @users = User.page(params[:page]).per(8)
       @heading = "会員一覧"
     end
   end

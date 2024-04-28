@@ -17,7 +17,7 @@
       <p>コメント件数：<%= post.comments.count %></p>
       <% post.tags.each do |tag| %>
         <i class="fa-sharp fa-solid fa-tag">
-          <%= link_to tag.tag_name, searches_search_path(content: tag.tag_name, model:"tag") %>
+          <%= link_to tag.tag_name, searches_search_path(keyword: tag.tag_name, model:"tag") %>
         </i>
       <% end %>
     </div>

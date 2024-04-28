@@ -1,4 +1,4 @@
-<h3>Users search for "<%= @keyword %>"</h3>
+<p><strong>【キーワード】</strong> :　<%= @keyword %></p>
 <% if @results.present? %>
   <%= render 'public/items/index', items: @results %>
 <% elsif @posts.present? %>

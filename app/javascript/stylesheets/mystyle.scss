@@ -16,42 +16,42 @@ main {
 }
 
 // トップページ
-body.top-page main {
-  margin-top: 62px; /* トップページの main 要素には適用しない */
+.top-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
 }
+
 .top-image-container {
   position: relative;
   width: 100%;
-  height: 720px;
-  overflow: hidden; /* 画像がコンテナからはみ出さないようにする */
+  max-width: 1200px;
+  margin: 0 auto;
 }
-.top-image-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+
 .background-image {
   width: 100%;
+  height: auto;
   display: block;
 }
+
 .text-overlay {
   position: absolute;
-  top: 50%;
+  top: 47%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
-  font-size: 50px;
+  font-size: 48px;
   font-weight: bold;
 }
 
-.img-container {
-  width: 360px;
-  height: 260px;
-}
-.img-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.text-overlay-subtitle {
+  font-size: 24px;
+  font-weight: normal;
+  margin-top: 20px;
 }
 
 // マイページ
@@ -132,6 +132,7 @@ body.top-page main {
 }
 .post_index p {
   font-size: small;
+  color: #000;
 }
 .user-image {
   width: 50px;
@@ -165,7 +166,7 @@ body.top-page main {
   font-size: small;
 }
 
-// おしゃれに
+// テーブル
 table {
     border-collapse: collapse;
     width: 100%;
@@ -215,4 +216,17 @@ table {
   width: 280px;
   background-color: #484e4d;
   color: #fff;
+}
+
+// ページネーション
+.pagination>li>a {          
+  border: none;     
+  color: #696969; 
+}
+.pagination>.active>a {     
+  background: #93c9ff;   
+  border-radius: 15px;   
+}
+.pagination>li>a:hover {        
+  border-radius: 15px;   
 }

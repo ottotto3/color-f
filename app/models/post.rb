@@ -9,6 +9,10 @@ class Post < ApplicationRecord
   validates :color,presence:true
   validates :star,presence:true
   validates :introduction,length:{maximum:400}
+  
+  scope :latest, -> {order(created_at: :desc)}
+  scope :old, -> {order(created_at: :asc)}
+  scope :star_count, -> {order(star: :desc)}
 
   def self.tag_search(keyword)
     Post.joins(:tags).where('tags.tag_name LIKE ?','%'+ keyword + '%')

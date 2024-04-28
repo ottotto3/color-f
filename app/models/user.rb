@@ -6,8 +6,10 @@ class User < ApplicationRecord
          
   has_many :comments
   has_many :posts
-  
   has_one_attached :profile_image
+  
+  validates :name, presence: true
+  validates :email, presence: true
   
   def self.search(keyword)
     Item.where('name LIKE ?','%'+ keyword + '%')

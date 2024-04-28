@@ -17,9 +17,16 @@ class Public::PostsController < ApplicationController
   end
   
   def index
-    @posts = Post.page(params[:page])
-    @posts = Post.page(params[:page]).order(created_at: :desc)
     @tag_list = PostTag.all
+    if params[:latest]
+      @posts = Post.page(params[:page]).latest
+    elsif params[:old]
+      @posts = Post.page(params[:page]).old
+    elsif params[:star_count]
+      @posts = Post.page(params[:page]).star_count
+    else
+      @posts = Post.page(params[:page]).latest
+    end
   end
 
   def show
