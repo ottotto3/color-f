@@ -40,8 +40,14 @@
           <th></th>
           <td>
             クチコミ：<%= item.posts.count %>件
-            <%= link_to new_post_path(item_id: item.id), class: "ml-5 btn btn-success" do %>
-              クチコミする
+            <% unless current_user %>
+              <%= link_to new_user_session_path, class: "ml-5 btn btn-success" do %>
+                クチコミする
+              <% end %>
+            <% else %>
+              <%= link_to new_post_path(item_id: item.id), class: "ml-5 btn btn-success" do %>
+                クチコミする
+              <% end %>
             <% end %>
           </td>
         </tr>
