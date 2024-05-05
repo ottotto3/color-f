@@ -10,4 +10,12 @@ class ApplicationController < ActionController::Base
       root_path
     end 
   end
+  
+  helper_method :logged_in?
+
+  private
+
+  def logged_in?
+    session[:user_id].present?
+  end
 end
