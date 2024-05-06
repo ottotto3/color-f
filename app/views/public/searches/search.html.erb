@@ -1,6 +1,11 @@
-<p><strong>【キーワード】</strong> :　<%= @keyword %></p>
-<% if @results.present? %>
-  <%= render 'public/items/index', items: @results %>
-<% elsif @posts.present? %>
-  <%= render partial: "public/posts/show", collection: @posts, as: :post, locals: { comment: @comment } %>
-<% end %>
+<div class="container">
+  <p><strong>【キーワード】</strong> :　<%= @keyword %></p>
+  <div class="row mt-4">
+    <% if @results.present? %>
+      <%= render 'public/items/index', items: @results %>
+    <% elsif @posts.present? %>
+      <%= render partial: "public/posts/show", collection: @posts, as: :post, locals: { comment: @comment } %>
+    <% end %>
+  </div>
+</div>
+
