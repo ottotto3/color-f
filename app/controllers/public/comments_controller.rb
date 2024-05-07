@@ -22,8 +22,8 @@ class Public::CommentsController < ApplicationController
 
   def require_login
     unless logged_in?
-    flash[:alert] = "ご利用にはログインが必要です"
-    render 'public/sessions/new', layout: 'application'
+      flash[:alert] = "ご利用にはログインが必要です"
+      redirect_to new_user_session_path
     end
   end
 
