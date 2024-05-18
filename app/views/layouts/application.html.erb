@@ -9,14 +9,15 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-    <header  class="shadow-sm">
+    <header>
       <%= render 'layouts/header' %>
     </header>
-    <main>
+    <main class="main">
       <%= yield %>
     </main>
-    
+    <footer class="mt-3 bg-light">
+      <%= render 'layouts/footer' %>
+    </footer>
   </body>
 </html>

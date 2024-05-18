@@ -5,6 +5,22 @@ header {
   left: 0;
   width: 100%;
   z-index: 1; /* ヘッダーを最前面に配置するために必要な設定 */
+  // height: 63px;
+}
+
+footer {
+  font-family: 'Verdana',sans-serif;
+  width: 100%;
+  padding: 20px 0;
+  border-top: 1px solid #dee2e6;
+}
+footer p {
+  margin: 0;
+  color: #6c757d;
+}
+
+.main{
+  min-height: calc(100vh - 63px - 98px);
 }
 
 .navbar-brand {
@@ -171,7 +187,7 @@ table {
     border-collapse: collapse;
     width: 100%;
     max-width: 600px;
-    margin: 0 auto; 
+    margin: 0 auto;
   }
   th {
     border-bottom: 1px solid #ddd;
@@ -181,12 +197,12 @@ table {
   td {
     border-bottom: 1px solid #ddd;
     padding: 13px;
-    vertical-align: top; 
+    vertical-align: top;
   }
   .item_colors_show {
     display: flex;
     flex-wrap: wrap;
-    align-items: center; 
+    align-items: center;
   }
   .item_color_show {
     width: 30px;
@@ -201,7 +217,7 @@ table {
     border-radius: 50%;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   }
-  
+
   // ログイン画面
 .bold-underline {
   color: #484e4d;
@@ -219,14 +235,14 @@ table {
 }
 
 // ページネーション
-.pagination>li>a {          
-  border: none;     
-  color: #696969; 
+.pagination>li>a {
+  border: none;
+  color: #696969;
 }
-.pagination>.active>a {     
-  background: #93c9ff;   
-  border-radius: 15px;   
+.pagination>.active>a {
+  background: #93c9ff;
+  border-radius: 15px;
 }
-.pagination>li>a:hover {        
-  border-radius: 15px;   
+.pagination>li>a:hover {
+  border-radius: 15px;
 }
