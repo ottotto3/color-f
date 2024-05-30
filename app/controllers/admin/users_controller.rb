@@ -1,4 +1,6 @@
 class Admin::UsersController < ApplicationController
+  before_action :authenticate_admin!
+  
   def index
     if params[:search].present?
       search_users = User.select { |user| user.name.include?(params[:search]) }
