@@ -1,3 +1,11 @@
+<% if item.errors.any? %>
+  <ul class="alert alert-danger text-left" role="alert">
+    <% item.errors.full_messages.each do |message| %>
+      <li class="pl-3"><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <%= form_with(model: item, url: (item.persisted? ? admin_item_path(item) : admin_items_path), local: true) do |f| %>
   <table class='table'>
     <tr>

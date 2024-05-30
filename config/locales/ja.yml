@@ -34,12 +34,24 @@ ja:
               too_long: "は%{count}文字以下に設定して下さい。"
               invalid: "は有効でありません。"
               confirmation: "が内容とあっていません。"
+        item: # itemモデルに対するエラーメッセージを追加
+              attributes:
+                name:
+                  blank: "が入力されていません。"
+                price:
+                  blank: "が入力されていません。"
+                capacity:
+                  blank: "が入力されていません。"
     models:
       user: ユーザー
+      item: アイテム # itemモデルの表示名を追加
     attributes:
-        user:
-          name: 名前
-          email: メールアドレス
-          password: パスワード
-          password_confirmation: パスワード確認
-
+      user:
+        name: 名前
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード確認
+      item: 
+        name: 商品名
+        price: 価格
+        capacity: 容量
