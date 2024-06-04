@@ -42,9 +42,21 @@ ja:
                   blank: "が入力されていません。"
                 capacity:
                   blank: "が入力されていません。"
+        post: # postモデルに対するエラーメッセージを追加
+              attributes:
+                star:
+                  blank: "が入力されていません。"
+                introduction:
+                  blank: "が入力されていません。"
+        comment: # itemモデルに対するエラーメッセージを追加
+              attributes:
+                comment:
+                  blank: "が入力されていません。"
     models:
       user: ユーザー
       item: アイテム # itemモデルの表示名を追加
+      post: ポスト
+      comment: コメント
     attributes:
       user:
         name: 名前
@@ -55,3 +67,8 @@ ja:
         name: 商品名
         price: 価格
         capacity: 容量
+      post: 
+        star: 評価
+        introduction: 説明文
+      comment:
+        comment: コメント

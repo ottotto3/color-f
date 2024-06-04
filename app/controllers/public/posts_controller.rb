@@ -1,16 +1,18 @@
 class Public::PostsController < ApplicationController
+  before_action :authenticate_user!, only: [:create, :update]
+  
   def new
     @post = Post.new
   end
 
   def create
     item = Item.find(params[:item_id])
-    post = current_user.posts.new(post_params)
+    @post = current_user.posts.new(post_params)
     tag_list = params[:post][:tag_name].split(',')
-    post.item_id = item.id
-    if post.save
-      post.save_tags(tag_list)
-      redirect_to posts_path, notice:'投稿が完了しました'
+    @post.item_id = item.id
+    if @post.save
+      @post.save_tags(tag_list)
+      redirect_to post_path(@post.id), notice:'投稿が完了しました'
     else
       render :new
     end

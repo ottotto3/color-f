@@ -6,9 +6,8 @@ class Post < ApplicationRecord
   has_many :post_tags, dependent: :destroy
   has_many :tags, through: :post_tags
 
-  validates :color,presence:true
   validates :star,presence:true
-  validates :introduction,length:{maximum:400}
+  validates :introduction,presence:true,length:{maximum:400}
   
   scope :latest, -> {order(created_at: :desc)}
   scope :old, -> {order(created_at: :asc)}
